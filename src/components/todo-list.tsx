@@ -22,7 +22,7 @@ export function TodoList({
   loading,
 }: TodoListProps) {
   return (
-    <Card className="border-0 shadow-lg rounded-3xl bg-white/80 backdrop-blur-sm overflow-hidden p-6">
+    <Card className="border-0 shadow-lg rounded-3xl bg-white/30 backdrop-blur-sm overflow-hidden p-0 md:p-6">
       {loading ? (
         <div className="space-y-4">
           {[1, 2, 3].map((i) => (

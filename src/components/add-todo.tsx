@@ -37,7 +37,7 @@ export function AddTodo({ onAddTodo }: AddTodoProps) {
 
   return (
     <Card className="sticky top-0 z-50 border-0 shadow-lg rounded-3xl bg-white/80 backdrop-blur-sm">
-      <CardContent className="p-8">
+      <CardContent className="p-2 md:p-8">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1">
             <Input
@@ -47,7 +47,7 @@ export function AddTodo({ onAddTodo }: AddTodoProps) {
               onChange={(e) => setNewTodo(e.target.value)}
               onKeyDown={handleKeyDown}
               disabled={loading}
-              className="h-14 text-lg rounded-2xl border-2 border-indigo-100 focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 bg-white/70"
+              className="h-14 text-sm md:text-lg rounded-2xl border-2 border-indigo-100 focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 bg-white/70"
             />
           </div>
           <Button
