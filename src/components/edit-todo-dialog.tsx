@@ -1,3 +1,5 @@
+// components/edit-todo-dialog.tsx
+
 "use client";
 
 import { useRef, useEffect } from "react";
@@ -78,17 +80,17 @@ export function EditTodoDialog({
 
           <div className="flex gap-3 pt-2">
             <Button
-              onClick={() => onSave(title)}
-              className="flex-1 h-12 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200"
-            >
-              Save Changes
-            </Button>
-            <Button
               variant="outline"
               onClick={onClose}
               className="h-12 px-8 border-2 border-indigo-200 text-indigo-600 hover:bg-indigo-50 rounded-2xl transition-all duration-200 bg-transparent"
             >
               Cancel
+            </Button>
+            <Button
+              onClick={() => onSave(title)}
+              className="flex-1 h-12 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200"
+            >
+              Save Changes
             </Button>
           </div>
         </div>
