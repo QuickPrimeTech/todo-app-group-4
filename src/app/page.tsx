@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { useTodos } from "@/hooks/use-todos";
 import { AppHeader } from "@/components/app-header";
@@ -7,7 +6,6 @@ import { AddTodo } from "@/components/add-todo";
 import { TodoList } from "@/components/todo-list";
 import { EditTodoDialog } from "@/components/edit-todo-dialog";
 import type { Todo } from "@/types/todo";
-import { toast } from "sonner";
 
 export default function TodoApp() {
   const { todos, addTodo, deleteTodo, updateTodo, loading } = useTodos();
@@ -28,7 +26,6 @@ export default function TodoApp() {
       });
       setIsDialogOpen(false);
       setEditingTodo(null);
-      toast.success("Successfully edited the task");
     }
   };
 
