@@ -9,6 +9,8 @@ import {
   collection,
   getDocs,
   Timestamp,
+  orderBy,
+  query,
 } from "firebase/firestore";
 
 //function for creating a todo
@@ -34,7 +36,10 @@ export const deleteTodo = async (id: string) => {
 };
 
 export const fetchTodos = async () => {
-  const snapshot = await getDocs(collection(db, "todos"));
+  const todosRef = collection(db, "todos");
+  const todosQuery = query(todosRef, orderBy("createdAt", "desc")); // sort by createdAt descending
+  const snapshot = await getDocs(todosQuery);
+
   return snapshot.docs.map((doc) => {
     const data = doc.data();
     return {
