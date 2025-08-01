@@ -2,61 +2,60 @@
 import { useState } from "react";
 import { useTodos } from "@/hooks/use-todos";
 import { AppHeader } from "@/components/app-header";
-import { AddTodo } from "@/components/add-todo";
-import { TodoList } from "@/components/todo-list";
-import { EditTodoDialog } from "@/components/edit-todo-dialog";
+import { AddItem } from "@/components/add-item";
+import { ItemList } from "@/components/item-list";
+import { EditItemDialog } from "@/components/edit-item-dialog";
 import type { Todo } from "@/types/todo";
 
-export default function TodoApp() {
+export default function ShoppingListApp() {
   const { todos, addTodo, deleteTodo, updateTodo, loading } = useTodos();
-  const [editingTodo, setEditingTodo] = useState<Todo | null>(null);
+  const [editingItem, setEditingItem] = useState<Todo | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [title, setTitle] = useState<string>("");
 
-  const handleEditTodo = (todo: Todo) => {
-    setEditingTodo(todo);
-    setTitle(todo.title);
+  const handleEditItem = (item: Todo) => {
+    setEditingItem(item);
+    setTitle(item.title);
     setIsDialogOpen(true);
   };
 
   const handleSaveEdit = () => {
-    if (editingTodo && title.trim() !== "") {
-      updateTodo(editingTodo.id, {
-        title,
-      });
+    if (editingItem && title.trim() !== "") {
+      updateTodo(editingItem.id, { title });
       setIsDialogOpen(false);
-      setEditingTodo(null);
+      setEditingItem(null);
     }
   };
 
   const handleCloseDialog = () => {
     setIsDialogOpen(false);
-    setEditingTodo(null);
+    setEditingItem(null);
   };
-  const updateTask = (title: string) => {
+
+  const updateItem = (title: string) => {
     setTitle(title);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 p-3 md:p-6">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-lime-50 p-3 md:p-6">
       <div className="max-w-4xl mx-auto space-y-8">
         <AppHeader />
 
-        <AddTodo onAddTodo={addTodo} />
+        <AddItem onAddItem={addTodo} />
 
-        <TodoList
+        <ItemList
           todos={todos}
           loading={loading}
-          onDeleteTodo={deleteTodo}
-          onEditTodo={handleEditTodo}
+          onDeleteItem={deleteTodo}
+          onEditItem={handleEditItem}
         />
 
-        <EditTodoDialog
+        <EditItemDialog
           isOpen={isDialogOpen}
           onClose={handleCloseDialog}
-          editingTodo={editingTodo}
+          editingItem={editingItem}
           title={title}
-          updateTodo={updateTask}
+          updateItem={updateItem}
           onSave={handleSaveEdit}
         />
       </div>
